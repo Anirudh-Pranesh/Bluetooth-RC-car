@@ -1,4 +1,4 @@
-int state;
+int state; // variable to store bluetooth commands
 const unsigned int TRIG_PIN = 12;
 const unsigned int ECHO_PIN = 13;
 
@@ -7,6 +7,7 @@ void setup() {
   Serial.begin(9600);
   pinMode(TRIG_PIN, OUTPUT);
   pinMode(ECHO_PIN, INPUT);
+  // motor driver pins
   pinMode(2, OUTPUT);
   pinMode(3, OUTPUT);
   pinMode(4, OUTPUT);
@@ -15,58 +16,6 @@ void setup() {
   pinMode(7, OUTPUT);
   pinMode(8, OUTPUT);
   pinMode(9, OUTPUT);
-}
-
-void loop() {
-  digitalWrite(TRIG_PIN, LOW);
-  delayMicroseconds(2);
-  digitalWrite(TRIG_PIN, HIGH);
-  delayMicroseconds(10);
-  digitalWrite(TRIG_PIN, LOW);
-
-  const unsigned long duration = pulseIn(ECHO_PIN, HIGH); //Measure time taken for pulse to hit echo pin
-  int distance = duration/29/2;
-  if(Serial.available() > 0){
-    state = Serial.read();
-    Serial.println(state);
-  }
-  if(distance<10){
-    stop();
-  }
-  else{
-    if(state == 'F'){
-      Serial.println("Going forward");
-      moveForward();
-    }
-  }
-  if(state == 'f'){
-    Serial.println("stopping");
-    stop();
-  }
-  else if(state == 'B'){
-    Serial.println("Going backward");
-    moveBackward();
-  }
-  else if(state == 'b'){
-    Serial.println("stopping");
-    stop();
-  }
-  else if(state == 'R'){
-    Serial.println("Going right");
-    turnRight();
-  }
-  else if(state == 'r'){
-    Serial.println("stopping");
-    stop();
-  }
-  else if(state == 'L'){
-    Serial.println("Going left");
-    turnLeft();
-  }
-  else if(state == 'l'){
-    Serial.println("stopping");
-    stop();
-  }
 }
 
 void moveForward(){
@@ -122,4 +71,56 @@ void stop(){
   digitalWrite(7, LOW);
   digitalWrite(8, LOW);
   digitalWrite(9, LOW);
+}
+
+void loop() {
+  digitalWrite(TRIG_PIN, LOW);
+  delayMicroseconds(2);
+  digitalWrite(TRIG_PIN, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(TRIG_PIN, LOW);
+
+  const unsigned long duration = pulseIn(ECHO_PIN, HIGH); //Measure time taken for pulse to hit echo pin
+  int distance = duration/29/2;
+  if(Serial.available() > 0){
+    state = Serial.read();
+    Serial.println(state);
+  }
+  if(distance<10){
+    stop();
+  }
+  else{
+    if(state == 'F'){
+      Serial.println("Going forward");
+      moveForward();
+    }
+  }
+  if(state == 'f'){
+    Serial.println("stopping");
+    stop();
+  }
+  else if(state == 'B'){
+    Serial.println("Going backward");
+    moveBackward();
+  }
+  else if(state == 'b'){
+    Serial.println("stopping");
+    stop();
+  }
+  else if(state == 'R'){
+    Serial.println("Going right");
+    turnRight();
+  }
+  else if(state == 'r'){
+    Serial.println("stopping");
+    stop();
+  }
+  else if(state == 'L'){
+    Serial.println("Going left");
+    turnLeft();
+  }
+  else if(state == 'l'){
+    Serial.println("stopping");
+    stop();
+  }
 }

@@ -14,9 +14,9 @@ Project video link : https://www.youtube.com/watch?v=uCdktF-sXIw
 
 # L298N - Working principle 
 <img width="750" height="500" alt="image" src="https://github.com/user-attachments/assets/43704595-77e1-411b-a9e3-f6df02c8e356" />
-<br/><br/>
+<br/>
 L298N motor driver works on dual H-Bridge concept. The H-bridge allows for current to flow in both directions through the motor thus allowing you to control direction of rotation through a signal.<br/><br/>
-<img width="761" height="1024" alt="image" src="https://github.com/user-attachments/assets/9a9a7e60-98f2-4940-9b93-4be4d28acf8b" /><br/><br/>
+<img width="761" height="1024" alt="image" src="https://github.com/user-attachments/assets/9a9a7e60-98f2-4940-9b93-4be4d28acf8b" /><br/>
 
 The signal controls which switches are on and off in the H-Bridge. Giving a signal through IN1 will switch on both S1 and S4, whereas giving a signal through IN2 will trigger both S2 and S3, thus changing direction of flow of current and hence changing the motor rotation (In practice these switches are MOSFETs, two P type and two N type).
 

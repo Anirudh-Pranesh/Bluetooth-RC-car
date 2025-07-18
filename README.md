@@ -4,7 +4,7 @@ Project video link : https://www.youtube.com/watch?v=uCdktF-sXIw
 
 **Parts used :** <br/>
 1. 2x L298N motor driver
-2. 1x Arduino
+2. 1x Arduino Uno / Nano
 3. Jumper wires
 4. 1x Ultrasonic sensor
 5. 4x DC motors
